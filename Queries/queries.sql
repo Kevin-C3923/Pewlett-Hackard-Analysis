@@ -148,3 +148,30 @@ ON (ce.emp_no = de.emp_no)
 INNER JOIN departments AS d
 ON (de.dept_no = d.dept_no);
 
+------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------
+
+SELECT * FROM retirement_info; 
+
+SELECT * FROM dept_info; 
+
+SELECT * FROM departments; 
+
+SELECT * FROM titles; 
+
+
+--- Sales Department ---
+
+SELECT R.emp_no, R.first_name, R.last_name, DI.dept_name
+FROM retirement_info AS R
+LEFT JOIN dept_info AS DI
+ON R.emp_no = DI.emp_no
+WHERE DI.dept_name = 'Sales';
+
+--- Sales and Development Department ---
+
+SELECT R.emp_no, R.first_name, R.last_name, DI.dept_name
+FROM retirement_info AS R
+LEFT JOIN dept_info AS DI
+ON R.emp_no = DI.emp_no
+WHERE DI.dept_name IN ('Sales', 'Development');
