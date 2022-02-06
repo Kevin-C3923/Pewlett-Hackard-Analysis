@@ -27,3 +27,19 @@ FROM unique_titles
 GROUP BY title
 ORDER BY "count" DESC;
 
+---------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------
+
+SELECT DISTINCT ON (emp_no)  E.emp_no, E.first_name, E.last_name, E.birth_date,	
+		DE.from_date, DE.to_date,
+		T.title
+--INTO mentorship_eligibilty
+FROM employees AS E 
+JOIN dept_employees AS DE
+ON E.emp_no = DE.emp_no
+JOIN titles AS T
+ON E.emp_no = T.emp_no
+WHERE (DE.to_date = '9999-01-01') AND (E.birth_date Between '1965-01-01 ' AND '1965-12-31')
+ORDER BY emp_no ;
+
+
